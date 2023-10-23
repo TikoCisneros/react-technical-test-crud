@@ -1,18 +1,22 @@
-import useAxios from 'axios-hooks';
+import { useState } from "react";
+import { Tasks } from "./components/Tasks";
+import { AddTask } from "./components/AddTask";
+import { Button } from "@chakra-ui/react";
 
 function App() {
-  const [{ data, loading, error }] = useAxios('http://localhost:8100/tasks');
+  const [showList, setShowList] = useState(true);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error!</p>;
+  const showListHandler =  () => setShowList((prevState) => !prevState);
 
   return (
-    <ul>
-      {data.map(({ id, name }) => (
-        <li key={id}>{name}</li>
-      ))}
-    </ul>
-  );
+    <div>
+      <Button onClick={showListHandler}>
+        {showList ? 'Add task' : 'Back to list'}
+      </Button>
+      {showList ? <Tasks /> : <AddTask  onSuccess={showListHandler} />}
+    </div>
+  )
+
 }
 
 export default App;

@@ -28,6 +28,21 @@
       "id": "f1038638-d0c3-4d21-bde6-076a564c44f6",
       "name": "Lavar la ropa",
       "done": false
+    },
+    {
+      "id": "f3972bb2-d0a6-43d0-a681-47e4711b1ff0",
+      "name": "Ordenar cuarto",
+      "done": false
+    },
+    {
+      "id": "b93473fe-bfaa-459b-8da7-a807639133bf",
+      "name": "Sacar al perro",
+      "done": false
+    },
+    {
+      "id": "898fc3a1-b126-4f95-b208-69661c7c137e",
+      "name": "Dormir",
+      "done": false
     }
   ]
 }

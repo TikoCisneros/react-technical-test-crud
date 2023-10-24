@@ -1,7 +1,9 @@
+import { Flex } from "@chakra-ui/react";
 import useAxios from "axios-hooks";
+import { Task } from "./Task";
 
 export const Tasks = () => {
-  const [{ data, loading, error }] = useAxios({
+  const [{ data, loading, error }, refresh] = useAxios({
     url: 'http://localhost:8100/tasks',
     method: 'GET'
   }, { useCache: false });
@@ -10,10 +12,10 @@ export const Tasks = () => {
   if (error) return <p>Error loading tasks!</p>;
 
   return (
-    <ul>
-      {data.map(({ id, name }) => (
-        <li key={id}>{name}</li>
+    <Flex flexDirection="column" gap="2">
+      {data.map((task) => (
+        <Task key={task.id} task={task} onOperationDone={refresh}/>
       ))}
-    </ul>
+    </Flex>
   );
 }
